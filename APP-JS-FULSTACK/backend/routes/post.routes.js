@@ -1,11 +1,13 @@
 const express = require('express');
-const { setPosts } = require('../controllers/post.controller');
+const { setPosts, getPosts, editPost } = require('../controllers/post.controller');
 const router = express.Router();
 
 
-router.get("/", (req , res) => {
-    res.json({ message : "Voici les données KUD"})
-});
+router.get("/", getPosts
+// (req , res) => {
+//     res.json({ message : "Voici les données KUD"})}
+);
+
 
 router.post("/", setPosts
 // async (req , res) => {
@@ -22,11 +24,15 @@ router.post("/", setPosts
 
 
 /*(req , res) => {
-    res.json({ message : "Voici les données KUD"})}*/); //declanche setpost(qui est dans controlers) lsq q nous sommes sur cette route
+    res.json({ message : "Voici les données KUD"})}*/
+); //declanche setpost(qui est dans controlers) lsq q nous sommes sur cette route
 
-router.put("/:id" , (req , res ) => {
-    res.json({ messageId : req.params.id })
-});
+router.put("/:id" , editPost
+
+// (req , res ) => {
+//     res.json({ messageId : req.params.id })
+// }
+);
 
 router.delete("/:id", (req , res) => {
     res.json({message : "Post supprimé id : " + req.params.id});

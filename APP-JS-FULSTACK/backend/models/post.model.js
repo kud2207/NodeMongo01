@@ -25,7 +25,7 @@ const postSchema = mongoose.Schema(
     },
 
     {
-        //pour indiquer la date de creation ou de modification
+        //pour indiquer la date de creation et de modification de la table
         timestamps: true, 
     }
 );
