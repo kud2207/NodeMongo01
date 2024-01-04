@@ -68,7 +68,21 @@ module.exports.likePost = async (req , res) => {
     try{
         await postModel.findByIdAndUpdate(
             req.params.id,
-            { $addToSet : { likers : req.body.userId}},  //"userId" vas recuperer le nom du liker et afficher dan sla BD
+            { $addToSet : { likers : req.body.userId}},  //"$addToSet" vas recuperer le nom du "likers : req.body.userId" et ajouter dans la tableau LIke
+            { new : true}
+        ).then((data) => res.status(200).send(data)) ;
+    } catch (err){
+        res.status(400).json(err)
+    }
+}
+
+
+//PATCH:: fontion d'affiche des gens qui on disliker***********************************
+module.exports.dislikePost = async (req , res) => {
+    try{
+        await postModel.findByIdAndUpdate(
+            req.params.id,
+            { $pull : { likers : req.body.userId}}, //"$pull" vas recuperer le nom du "likers : req.body.userId" et les retirer dans la tableau LIke
             { new : true}
         ).then((data) => res.status(200).send(data)) ;
     } catch (err){
