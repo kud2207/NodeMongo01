@@ -62,3 +62,16 @@ module.exports.delePost = async (req , res) =>{
     res.status(200).json("Message supprimé" + req.params.id)
 }
  
+
+//PATCH:: fontion d'affiche des gens qui on liker***********************************
+module.exports.likePost = async (req , res) => {
+    try{
+        await postModel.findByIdAndUpdate(
+            req.params.id,
+            { $addToSet : { likers : req.body.userId}},  //"userId" vas recuperer le nom du liker et afficher dan sla BD
+            { new : true}
+        ).then((data) => res.status(200).send(data)) ;
+    } catch (err){
+        res.status(400).json(err)
+    }
+}

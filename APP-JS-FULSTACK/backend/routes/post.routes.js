@@ -1,5 +1,5 @@
 const express = require('express');
-const { setPosts, getPosts, editPost, delePost } = require('../controllers/post.controller');
+const { setPosts, getPosts, editPost, delePost, likePost } = require('../controllers/post.controller');
 const router = express.Router();
 
 
@@ -40,9 +40,11 @@ router.delete("/:id",delePost
 // }
 ); 
 
-router.patch("/like-post/:id", (req , res) => {
-    res.json({message : "Post liké :  id : " + req.params.id});
-})
+router.patch("/like-post/:id", likePost
+// (req , res) => {
+//     res.json({message : "Post liké :  id : " + req.params.id});
+// }
+)
 
 router.patch("/dislike-post/:id", (req , res) => {
     res.json({message : "Post disliké :  id : " + req.params.id});
