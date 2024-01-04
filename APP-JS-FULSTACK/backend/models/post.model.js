@@ -5,9 +5,17 @@ const postSchema = mongoose.Schema(
     {
         message : {
             type : String,
+            require : true,
+        },
+        author : { 
+            type : String,
             require : true
         },
-        author : {
+        age : { 
+            type : String,
+            require : true
+        },
+        sexe : { 
             type : String,
             require : true
         },
@@ -20,7 +28,7 @@ const postSchema = mongoose.Schema(
         //pour indiquer la date de creation ou de modification
         timestamps: true, 
     }
-)
+);
 
 //post : pour le nom que sava porter dans la BD
 //postSchema sstructure de la bBD

@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 const configDB = require('../database/mongodb.json')
 
-const connectDB=()=> {mongoose.connect( "mongodb://127.0.0.1:27017/newBD" ,
+const connectDB=()=> {mongoose.connect( "mongodb://127.0.0.1:27017/app-js-fullstack" ,
    {
    useNewUrlParser: true ,
-   useUnifiedTopology: true
+   useUnifiedTopology: true         
    },
    (err)=>{ 
    if(err){
-      console.log(err)
+      console.log(err) 
    }
    else{
       console.log("Connected to DB !!")
